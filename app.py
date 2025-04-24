@@ -1,11 +1,10 @@
 import os
 import asyncio
-import discord
 from dotenv import load_dotenv
 from quart import Quart
 from backend.routes import routes
-from backend.bots.main import bot as ntmdev
-from backend.bots.ticket import bot as ntmticket
+from backend.bots.ntm_dev import bot as ntmdev
+from backend.bots.ntm_ticket import bot as ntmticket
 
 load_dotenv()
 ntmdev_token = os.getenv("ntmdev")

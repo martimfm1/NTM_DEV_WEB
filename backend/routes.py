@@ -2,7 +2,7 @@ import os
 import discord
 import requests
 from dotenv import load_dotenv
-from backend.bots.main import bot as ntmdev
+from backend.bots.ntm_dev import bot as ntmdev
 from quart import Quart, redirect, request, session, render_template, send_from_directory, Blueprint
 
 app = Quart(__name__, static_folder='site/static', template_folder='site/templates')
