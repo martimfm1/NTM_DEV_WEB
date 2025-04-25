@@ -37,9 +37,9 @@ document.querySelectorAll('.faq-question').forEach(question => {
 // hamburger ends
 
 // comprar starts
-    document.getElementById("btn-sell-1").addEventListener("click", async () => {
+    document.getElementById("btn-sell").addEventListener("click", async () => {
       try {
-          const response = await fetch("/comprar1", {
+          const response = await fetch("/comprar", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
           });
@@ -53,41 +53,5 @@ document.querySelectorAll('.faq-question').forEach(question => {
           console.error("Erro na requisição:", error);
           alert("Ocorreu um erro ao processar sua compra.");
       }
-  });
-  
-  document.getElementById("btn-sell-2").addEventListener("click", async () => {
-    try {
-        const response = await fetch("/comprar2", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-        });
-        const data = await response.json();
-        if (data.success) {
-            alert("Verifique sua mensagem no Discord.");
-        } else {
-            alert(`Erro: ${data.message}`);
-        }
-    } catch (error) {
-        console.error("Erro na requisição:", error);
-        alert("Ocorreu um erro ao processar sua compra.");
-    }
-  });
-  
-  document.getElementById("btn-sell-3").addEventListener("click", async () => {
-    try {
-        const response = await fetch("/comprar3", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-        });
-        const data = await response.json();
-        if (data.success) {
-            alert("Verifique sua mensagem no Discord.");
-        } else {
-            alert(`Erro: ${data.message}`);
-        }
-    } catch (error) {
-        console.error("Erro na requisição:", error);
-        alert("Ocorreu um erro ao processar sua compra.");
-    }
   });
   //comprar ends

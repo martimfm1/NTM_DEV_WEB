@@ -85,7 +85,6 @@ class Dropdown(discord.ui.Select):
             discord.SelectOption(value="shopping", label="Shopping", emoji="🛒", description='Ticket for shopping'),
             discord.SelectOption(value="support", label="Support", emoji="💳", description='Ticket for support'),
             discord.SelectOption(value="doubts", label="Doubts", emoji="❔", description='Ticket for doubts'),
-            discord.SelectOption(value="bugs", label="Bugs", emoji="🐌", description='Ticket for bugs'),
             discord.SelectOption(value="partners", label="Partners", emoji="🤝", description='Ticket to close partnership')
         ]
         super().__init__(

@@ -130,8 +130,8 @@ async def change_language_login():
     else:
         return redirect("/login-PT")
 
-@routes.route("/comprar1", methods=["POST"])
-async def comprar1():
+@routes.route("/comprar", methods=["POST"])
+async def comprar():
     if "user_id" not in session:
         return {"success": False, "message": "Usuário não autenticado."}, 401
 
@@ -147,7 +147,7 @@ async def comprar1():
             return {"success": False, "message": "Erro ao buscar usuário no Discord."}, 500
 
     try:
-        mensagem = f"Olá, {session['username']}! Para fazer a compra do bot de sugestões entre no nosso discord, https://discord.gg/aKpwVrXgyx e abra um ticket em https://discord.com/channels/1290074291047632919/1303725153934381090. Se tiver dúvidas, entre em contato com nossa equipe de suporte."
+        mensagem = f"Olá, {session['username']}! Para fazer a compra do produto entre no nosso discord, https://discord.gg/aKpwVrXgyx e abra um ticket em https://discord.com/channels/1290074291047632919/1303725153934381090. Se tiver dúvidas, entre em contato com nossa equipe de suporte."
         await user.send(mensagem)
         return {"success": True, "message": "Mensagem enviada com sucesso."}, 200
     except discord.Forbidden:
@@ -156,60 +156,8 @@ async def comprar1():
         print(f"Erro ao enviar mensagem para {user_id}: {e}")
         return {"success": False, "message": "Erro ao enviar a mensagem."}, 500
 
-@routes.route("/comprar2", methods=["POST"])
-async def comprar2():
-    if "user_id" not in session:
-        return {"success": False, "message": "Usuário não autenticado."}, 401
-
-    user_id = int(session["user_id"])
-    user = ntmdev.get_user(user_id)
-
-    if not user:
-        try:
-            user = await ntmdev.fetch_user(user_id)
-        except discord.NotFound:
-            return {"success": False, "message": "Usuário não encontrado no Discord."}, 404
-        except discord.HTTPException as e:
-            return {"success": False, "message": "Erro ao buscar usuário no Discord."}, 500
-
-    try:
-        mensagem = f"Olá, {session['username']}! Para fazer a compra do bot de comandos personalizado entre no nosso discord, https://discord.gg/aKpwVrXgyx e abra um ticket em https://discord.com/channels/1290074291047632919/1303725153934381090. Se tiver dúvidas, entre em contato com nossa equipe de suporte."
-        await user.send(mensagem)
-        return {"success": True, "message": "Mensagem enviada com sucesso."}, 200
-    except discord.Forbidden:
-        return {"success": False, "message": "Não foi possível enviar mensagem. O usuário pode ter bloqueado mensagens diretas."}, 403
-    except discord.HTTPException as e:
-        print(f"Erro ao enviar mensagem para {user_id}: {e}")
-        return {"success": False, "message": "Erro ao enviar a mensagem."}, 500
-
-@routes.route("/comprar3", methods=["POST"])
-async def comprar3():
-    if "user_id" not in session:
-        return {"success": False, "message": "Usuário não autenticado."}, 401
-
-    user_id = int(session["user_id"])
-    user = ntmdev.get_user(user_id)
-
-    if not user:
-        try:
-            user = await ntmdev.fetch_user(user_id)
-        except discord.NotFound:
-            return {"success": False, "message": "Usuário não encontrado no Discord."}, 404
-        except discord.HTTPException as e:
-            return {"success": False, "message": "Erro ao buscar usuário no Discord."}, 500
-
-    try:
-        mensagem = f"Olá, {session['username']}! Para fazer a compra do bot de Anti-Links entre no nosso discord, https://discord.gg/aKpwVrXgyx e abra um ticket em https://discord.com/channels/1290074291047632919/1303725153934381090. Se tiver dúvidas, entre em contato com nossa equipe de suporte."
-        await user.send(mensagem)
-        return {"success": True, "message": "Mensagem enviada com sucesso."}, 200
-    except discord.Forbidden:
-        return {"success": False, "message": "Não foi possível enviar mensagem. O usuário pode ter bloqueado mensagens diretas."}, 403
-    except discord.HTTPException as e:
-        print(f"Erro ao enviar mensagem para {user_id}: {e}")
-        return {"success": False, "message": "Erro ao enviar a mensagem."}, 500
-
-@routes.route("/buy1", methods=["POST"])
-async def buy1():
+@routes.route("/buy", methods=["POST"])
+async def buy():
     if "user_id" not in session:
         return {"success": False, "message": "User not authenticated."}, 401
 
@@ -226,65 +174,7 @@ async def buy1():
 
     try:
         message = (
-            f"Hello, {session['username']}! To purchase the suggestion bot, join our Discord at https://discord.gg/aKpwVrXgyx and open a ticket at "
-            "https://discord.com/channels/1290074291047632919/1303725153934381090. If you have any questions, please contact our support team."
-        )
-        await user.send(message)
-        return {"success": True, "message": "Message sent successfully."}, 200
-    except discord.Forbidden:
-        return {"success": False, "message": "Could not send message. The user may have blocked direct messages."}, 403
-    except discord.HTTPException as e:
-        print(f"Error sending message to {user_id}: {e}")
-        return {"success": False, "message": "Error sending the message."}, 500
-
-@routes.route("/buy2", methods=["POST"])
-async def buy2():
-    if "user_id" not in session:
-        return {"success": False, "message": "User not authenticated."}, 401
-
-    user_id = int(session["user_id"])
-    user = ntmdev.get_user(user_id)
-
-    if not user:
-        try:
-            user = await ntmdev.fetch_user(user_id)
-        except discord.NotFound:
-            return {"success": False, "message": "User not found on Discord."}, 404
-        except discord.HTTPException as e:
-            return {"success": False, "message": "Error fetching user on Discord."}, 500
-
-    try:
-        message = (
-            f"Hello, {session['username']}! To purchase the custom command bot, join our Discord at https://discord.gg/aKpwVrXgyx and open a ticket at "
-            "https://discord.com/channels/1290074291047632919/1303725153934381090. If you have any questions, please contact our support team."
-        )
-        await user.send(message)
-        return {"success": True, "message": "Message sent successfully."}, 200
-    except discord.Forbidden:
-        return {"success": False, "message": "Could not send message. The user may have blocked direct messages."}, 403
-    except discord.HTTPException as e:
-        print(f"Error sending message to {user_id}: {e}")
-        return {"success": False, "message": "Error sending the message."}, 500
-
-@routes.route("/buy3", methods=["POST"])
-async def buy3():
-    if "user_id" not in session:
-        return {"success": False, "message": "User not authenticated."}, 401
-
-    user_id = int(session["user_id"])
-    user = ntmdev.get_user(user_id)
-
-    if not user:
-        try:
-            user = await ntmdev.fetch_user(user_id)
-        except discord.NotFound:
-            return {"success": False, "message": "User not found on Discord."}, 404
-        except discord.HTTPException as e:
-            return {"success": False, "message": "Error fetching user on Discord."}, 500
-
-    try:
-        message = (
-            f"Hello, {session['username']}! To purchase the Anti-Links bot, join our Discord at https://discord.gg/aKpwVrXgyx and open a ticket at "
+            f"Hello, {session['username']}! To purchase the product, join our Discord at https://discord.gg/aKpwVrXgyx and open a ticket at "
             "https://discord.com/channels/1290074291047632919/1303725153934381090. If you have any questions, please contact our support team."
         )
         await user.send(message)

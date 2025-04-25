@@ -37,45 +37,9 @@ toggleButton.addEventListener('click', () => {
 // hamburger ends
 
 // comprar starts
-document.getElementById("btn-sell-1").addEventListener("click", async () => {
+document.getElementById("btn-sell").addEventListener("click", async () => {
     try {
-        const response = await fetch("/buy1", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-        });
-        const data = await response.json();
-        if (data.success) {
-            alert("Check your message on Discord.");
-        } else {
-            alert(`Error: ${data.message}`);
-        }
-    } catch (error) {
-        console.error("Request error:", error);
-        alert("An error occurred while processing your purchase.");
-    }
-});
-
-document.getElementById("btn-sell-2").addEventListener("click", async () => {
-    try {
-        const response = await fetch("/buy2", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-        });
-        const data = await response.json();
-        if (data.success) {
-            alert("Check your message on Discord.");
-        } else {
-            alert(`Error: ${data.message}`);
-        }
-    } catch (error) {
-        console.error("Request error:", error);
-        alert("An error occurred while processing your purchase.");
-    }
-});
-
-document.getElementById("btn-sell-3").addEventListener("click", async () => {
-    try {
-        const response = await fetch("/buy3", {
+        const response = await fetch("/buy", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
         });
