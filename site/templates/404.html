@@ -17,18 +17,12 @@
         <img src="/site/static/images/404.svg" alt="404 Icon" />
         <h1 class="titulo">Error 404</h1>
         <p>The page you are looking for was not found or may have been moved.</p>
-        <button onclick="history.back()" id="backBtn">Go Back</button>
+        <button onclick="back()" id="backBtn">Go Back</button>
       </div>
 </body>
 <script>
-    const backBtn = document.getElementById("backBtn");
-
-    backBtn.addEventListener("click", () => {
-      if (window.history.length > 1) {
-        history.back();
-      } else {
-        window.location.href = "/";
-      }
-    });
+  function back() {
+    window.location.href = "/";
+  }
   </script>
 </html>
