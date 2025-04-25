@@ -1,7 +1,7 @@
 import os
 import asyncio
 from dotenv import load_dotenv
-from quart import Quart
+from quart import Quart, render_template
 from backend.routes import routes
 from backend.bots.ntm_dev import bot as ntmdev
 from backend.bots.ntm_ticket import bot as ntmticket
@@ -13,6 +13,10 @@ ntmticket_token = os.getenv("ntmticket")
 app = Quart(__name__, static_folder='site/static', template_folder='site/templates')
 app.secret_key = 'bananaazul'
 app.register_blueprint(routes)
+
+@app.errorhandler(404)
+async def page_not_found(e):
+    return await render_template("404.html"), 404
 
 async def main():
     await asyncio.gather(

@@ -190,6 +190,6 @@ async def logout():
     session.clear()
     return redirect("/")
 
-@app.errorhandler(404)
+@routes.errorhandler(404)
 async def page_not_found(e):
     return await render_template("404.html"), 404
