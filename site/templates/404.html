@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="Erro 404 | NTM DEV">
+    <meta property="og:description" content="A página que procuras não foi encontrada.">
+    <meta property="og:image" content="/site/static/images/404.svg">
+    <meta name="theme-color" content="#00ffff" />
+    <title>Error 404 | NTM DEV</title>
+    <link rel="stylesheet" href="/site/static/css/404.css">
+    <link rel="icon" href="/site/static/images/404.svg" type="image/svg+xml">
+</head>
+<body>
+    <div class="center">
+        <img src="/site/static/images/404.svg" alt="404 Icon" />
+        <h1 class="titulo">Error 404</h1>
+        <p>The page you are looking for was not found or may have been moved.</p>
+        <button onclick="history.back()" id="backBtn">Go Back</button>
+      </div>
+</body>
+<script>
+    const backBtn = document.getElementById("backBtn");
+
+    backBtn.addEventListener("click", () => {
+      if (window.history.length > 1) {
+        history.back();
+      } else {
+        window.location.href = "/";
+      }
+    });
+  </script>
+</html>

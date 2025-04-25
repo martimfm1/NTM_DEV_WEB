@@ -13,7 +13,7 @@ load_dotenv()
 # Configurações do Discord
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-REDIRECT_URI = "https://ntm-dev-web.onrender.com/discord/callback"
+REDIRECT_URI = "https://ntmdev.me/discord/callback"
 
 @routes.route('/site/templates/<path:filename>')
 async def templates_path(filename):
@@ -189,3 +189,7 @@ async def buy():
 async def logout():
     session.clear()
     return redirect("/")
+
+@app.errorhandler(404)
+async def page_not_found(e):
+    return await render_template("404.html"), 404
